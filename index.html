@@ -180,63 +180,197 @@ git commit -a -m "another commit "</code></pre>
 
         </section>
         <section><h2>Viewing Commit differences</h2>
-        
-        <img src="http://www.md-architectures.com/medias/images/work-in-progress.jpg">
+
+            <div style="text-align: left">
+            <b>git diff:</b> differences between the working directory and the index<br>
+            --cached: between the index and the most recent commit               <br>
+            <b>HEAD:</b> between the working directory and the most recent commit           <br>
+                                          </div>
         </section>
         </section>
 
         <section><h2>cancellation, restoration, cleaning
         </h2>
 
-            <img src="http://www.md-architectures.com/medias/images/work-in-progress.jpg">
+           <div style="text-align: left">
+               <ul>
+                  <li> <strong>git reset:</strong> cancels changes about to be commited in the index<br>
+                   <ul><li style="list-style-type:none;">--hard: changes also the working directory</li></ul>                    </li>
+                   <li> <b>git checkout:</b> cancels changes made to working directory compared to index<br>
+                   <li><b>git clean:</b> deletes files not followed by Git.
+                   <ul style="list-style-type:none;"><li >-f option to really delete them     </li>
+                       <li>-n to simulate                  </li></ul>                                       </li>
+                   <li><b>.gitignore file:</b> to avoid Git to track useless files             </li>
+               </ul>
+
+           </div>
         </section>
                   <section>
         <section><h2>Branch management
         </h2>
 
-            <img src="http://www.md-architectures.com/medias/images/work-in-progress.jpg">
+            <div style="text-align: left">
+                <ul>
+                    <li>A Branch is just a pointer to a commit
+                    </li>
+                    <li>nothing fancy</li>
+                    <li>very lightweight</li>
+                    <li>very similar to "tags"
+                    </li>
+                    <li>stored in .git/refs/[heads|remotes|tags]
+                    </li>
+                    <li>Default branch name: master
+                    </li>
+
+                </ul>
+            </div>
         </section>
 
         <section><h2>Branch management (2)        </h2>
 
-            <img src="http://www.md-architectures.com/medias/images/work-in-progress.jpg">
+
+
+            <div>
+                <ul>
+                    <li><b>git branch:</b> list branches
+                        <ul style="list-style-type:none;">
+                            <li>-r: remote branches as well</li>
+                        <li>-a all branches</li>
+                        </ul>
+                    </li>
+                    <li><b>git branch dev:</b> create branch "dev"
+                    <ul style="list-style:none;">
+                        <li>Does not change the current branch</li>
+                    </ul>
+                    </li>
+                    <li><b>git checkout dev: </b> move the current branch to the "dev" branch
+                        <ul style="list-style:none;">
+                            <li>-b: create the branch while switching to it</li>
+                        </ul>
+
+                    </li>
+                </ul>
+
+
+            </div>
+
         </section>
                   </section>
 
         <section><h2>Merging</h2>
 
-            <img src="http://www.md-architectures.com/medias/images/work-in-progress.jpg">
+            <div>
+                <ul>
+                    <li><b>git merge dev:</b>merges "dev" branch into current branch
+                        <ul >
+                            <li>does not destroy "dev"</li>
+                        </ul>
+                    </li>
+                    <li><b>git branch -d dev:</b>deletes the "dev" branch
+                        <ul>
+                            <li>only deletes the pointer</li>
+                            <li>can be deleted only if the branch is accessible from the current branch</li>
+                        <li>This is usually what is needed after merging. The old "dev" pointer is no longer useful</li>
+                            <li>in case of future branching, a new branch can be created</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </section>
 
         <section><h2>Conflict Resolution</h2>
 
-            <img src="http://www.md-architectures.com/medias/images/work-in-progress.jpg">
+            <ul>
+                <li>git merge can lead to conflicts if the same file has been modified in two branches</li>
+                <li>manual conflict resolution is needed on this files</li>
+                <li>conflict markers are added by git and need to be removed by the developper</li>
+                <li>git add on the conflict files</li>
+                <li>git commit to end the merge</li>
+                <li>and of course, delete the merged branch</li>
+                <li>if conflict resolution is too complex:
+                    <ul>
+                        <li><b>git merge --abort:</b> restores the working directory to the state it was prior to merge</li>
+                    </ul>
+                </li>
+
+            </ul>
+
         </section>
 
         <section><h2>Remote repositories</h2>
 
-            <img src="http://www.md-architectures.com/medias/images/work-in-progress.jpg">
+            <ul>
+                <li><b>git remote:</b> lists all remote repos linked to the current local repo</li>
+                <li><b>git remote add <i>name url</i>:</b> adds the specified url as a remote repo to the local repo</li>
+                <li>No need in case repo has been created with <i>git clone</i></li>
+                <li><b>git push repo</b>: push local commits on the current branch to the same branch on the remote repo
+                    <ul>
+                        <li class="fragment highlight-red">warning: the remote repo must already have the same branch, else use <b>git push <i>repo branch</i></b></li>
+                    </ul>
+
+                </li>
+            </ul>
         </section>
 
         <section><h2>Remotes: fetching and pulling
         </h2>
 
-            <img src="http://www.md-architectures.com/medias/images/work-in-progress.jpg">
+            <ul>
+                <li>There is a separate copy of the remote commits separated from the local branch
+                    <ul>
+                        <li>Can be seen using <b>git branch -a</b></li>
+                    </ul>
+                </li>
+                <li>this means that the remote and the local copy can easily be compared</li>
+                <li><b>git fetch <i>repo</i></b>: updates the local copy of the remote repo</li>
+                <li><b>git pull: </b>like git fetch, but also merges the remote commit into this repo's branch
+                    <ul>
+                        <li>this one can lead to conflicts</li>
+                    </ul>
+
+                </li>
+            </ul>
         </section>
 
         <section><h2>Git Rebase</h2>
 
-            <img src="http://www.md-architectures.com/medias/images/work-in-progress.jpg">
+            <ul>
+                <li>When fetching commits from remote repos, there are two ways to merge them:
+                    <ul>
+                        <li>regular merge: it will create a new commit every time</li>
+                        <li>rebase: it will not create a new commit</li>
+                    </ul>
+
+                </li>
+                <li>allows to change the commits that were not published to have new parents</li>
+                <li>very handy when you need to integrate other people changes but continu your work</li>
+                <li>use: <b>git rebase <i>branch</i></b></li>
+                <li><b>git pull --rebase: </b>will use the reboase algorithm in case of conflicts instead of merge</li>
+            </ul>
         </section>
                             <section>
         <section><h2>Stash: Save your work while switching context</h2>
 
-            <img src="http://www.md-architectures.com/medias/images/work-in-progress.jpg">
+            <ul>
+                <li>Allows to save your current context and switch work</li>
+                <li>Then, you can restore the exact state back</li>
+                <li><b>git stash save <i>messages</i>: </b>stores the working director and the index into a stack</li>
+                <li><b>git stash list: </b>lists all the saved stacks</li>
+                <li><b>git stash show: </b>shows the details of a stack item</li>
+                <li><b>git stash pop: </b>pops a state and applies it on the current working directory</li>
+                <li><b>git stash drop: </b>removes an item on the stack</li>
+            </ul>
         </section>
 
         <section><h2>Stash (2) </h2>
 
-            <img src="http://www.md-architectures.com/medias/images/work-in-progress.jpg">
+            <ul>
+                <li>warning, stashing does not store the branch state</li>
+                <li>This means that you can recover your state on any branch</li>
+                <li>popping a state can create conflicts that needs to be merged</li>
+                <li>if a pop failed because of a conflict, it will need to be removed manually</li>
+            </ul>
+
         </section>
                             </section>
 
