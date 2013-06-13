@@ -379,18 +379,73 @@ git commit -a -m "another commit "</code></pre>
         <img style="background-color: white" src="http://www.atlassian.com/software/stash/why-stash-git-repository-management/pageSections/0/pageSections/0/contentColumnTwo/0/imageBinary/whystash3.png"
              alt=""/>
            <h2> <a href="http://stash.fr.nds.com/projects">Stash</a></h2>
+        <small style="color: red">Different from git stash seen previously !!</small>
 
 
     </section>
 
+
     <section>
-        <h2>What are Git hosting tools?</h2>
+        <h2>Why need a git hosting tool?</h2>
         <ul>
             <li>Git alone is not sufficient</li>
-            <li>Need for a central repository scheme</li>
+            <li>Even on </li>
 
         </ul>
     </section>
+            <section>
+            <section>
+                <h2>Stash caracteristics</h2>
+                <ul>
+                    <li>Structuring projects, repos and roles</li>
+                    <li>Browse files, branches, commits and tags</li>
+                    <li>Code Reviews concepts: Pull requests</li>
+                    <li>Repos forking</li>
+                    <li>private repos</li>
+                    <li>Jira linking</li>
+                </ul>
+                </section>
+
+
+                    <section>
+                        <h2>Project Structures</h2>
+                        <ul>
+                            <li>Stash organized by projects that handles multiple repos</li>
+                            <li>permissions are based on projects and repos. Allows for decentralized admin</li>
+                            <li>users have roles: project creators, admins, system admins, writer</li>
+                            <li>Soon, anonymous mode</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>File browsing</h2>
+                        <ul>
+                            <li>Can browser any file and see source code</li>
+                            <li>Allows to change branches and tags</li>
+                            <li>Can have details of each commit</li>
+                            <li>browse list of commits and log</li>
+                            <li>markdown support to explain source code organization</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Pull requests</h2>
+                        <ul>
+                            <li>Implements best practices with respect to code review</li>
+                            <li>Allows anyone to create a branch, make some code and ask for its merge</li>
+                            <li>Branch permissions allows to control commits</li>
+                            <li>Pull requests allow to review, make comments, ammend new commits, see diffs...</li>
+                            <li>Anyone can watch a pull request and be notified</li>
+                            <li>Pull requests can be declined or accepted</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Forking</h2>
+                    </section>
+                    <section>
+                        <h2>Private repos</h2>
+                    </section>
+                <section><h2>Jira link</h2></section>
+                </section>
+
 
     <section>
         <h2>Branching strategies with Git</h2>
@@ -400,17 +455,54 @@ git commit -a -m "another commit "</code></pre>
             <li>But there are best practices !!</li>
         </ul>
     </section>
-
             <section>
-                <h2>Git Flow</h2>
+            <section >
+
+                <h1>Git Flow</h1>
+                <img src="http://nvie.com/img/2009/12/Screen-shot-2009-12-24-at-11.32.03.png" style="height: 450px">
 
                 <ul>
                     <li>Standard usages of branches when working with Git</li>
                     <li>Used in Big projects, with many developers working on it</li>
                 </ul>
 
+
             </section>
 
+            <section>
+                <h2>Main caracteristics</h2>
+                <ul>
+                    <li>2 long lived branches : <b>Develop</b> and <b>master</b></li>
+                    <li>3 short lived branches: <b>Feature</b>, <b>Release</b> and <b>HotFix</b></li>
+                    <li>The master branch is restricted to commit by one or two people</li>
+                    <li>The Develop branch is restricted to senior developers</li>
+
+                    <li>New code is added through Feature branches only</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Steps to follow</h2>
+                <ul>
+                    <li>Create a Feature branch, name it to the story/feature you are working on</li>
+                    <li>once you are happy with your features, you create a pull request to merge it <img src="http://nvie.com/img/2010/01/merge-without-ff.png"
+                                                                                                          alt="" style="display: block;
+                                                                                                         "/></li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Steps to follow (2)</h2>
+                <ul>
+                    <li>When a release must be done, use a temporary release branch</li>
+                    <li>The Master branch is used only for "stable" version commits. Any commits on master should have a Tag</li>
+                    <li>If a bug is found on Master, a "HotFix branch is created to correct it and merge it back on master </li>
+                </ul>
+                <img src="http://nvie.com/img/2010/01/hotfix-branches1.png" alt="" style="height: 350px
+                "/>
+            </section>
+
+                     </section>
 
 
 
